@@ -25,5 +25,11 @@ outputs:
   versionId: # id of output
     description: 'used version id'
 runs:
-  using: 'node12'
-  main: 'index.js'
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.sentry-organisation }}
+    - ${{ inputs.sentry-project }}
+    - ${{ inputs.sentry-auth-key }}
+    - ${{ inputs.release-id }}
+    - ${{ inputs.source-map-location }}

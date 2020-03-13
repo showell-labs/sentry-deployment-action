@@ -2,7 +2,7 @@ const fs = require('fs');
 const core = require('@actions/core');
 const github = require('@actions/github');
 const shell = require('shelljs');
-shell.exec('npm install @sentry/cli');
+// shell.exec('npm install @sentry/cli');
 const SentryCli = require('@sentry/cli');
 
 async function run() {
