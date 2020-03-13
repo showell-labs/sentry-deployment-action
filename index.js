@@ -23,7 +23,7 @@ async function run() {
         const sourceMapPre = core.getInput('source-map-prefix');
       
         const cli = new SentryCli('.sentryclirc');
-        const release = releaseId || cli.releases.proposeVersion();
+        const release = releaseId || await cli.releases.proposeVersion();
         console.log(`Release ID is ${release}`);
         await cli.releases.new(release);
         await cli.releases.uploadSourceMaps(release, {
