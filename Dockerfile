@@ -5,4 +5,4 @@ FROM getsentry/sentry-cli
 COPY . /
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
-CMD ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
