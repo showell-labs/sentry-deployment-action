@@ -17,9 +17,9 @@ export SENTRY_LOG_LEVEL=info
 echo "Release version is ${RELEASE_VERSION}"
 # Capture output
 output=$(
-sentry-cli releases -o ${SENTRY_ORGANIZATION} -p ${SENTRY_PROJECT} new $RELEASE_VERSION
-sentry-cli releases -o ${SENTRY_ORGANIZATION} -p ${SENTRY_PROJECT} files $RELEASE_VERSION upload-sourcemaps ${SOURCE_MAP_LOCATION}
-sentry-cli releases -o ${SENTRY_ORGANIZATION} -p ${SENTRY_PROJECT} finalize $RELEASE_VERSION
+sentry-cli releases -o ${SENTRY_ORGANIZATION} -p ${SENTRY_PROJECT} new ${RELEASE_VERSION}
+sentry-cli releases -o ${SENTRY_ORGANIZATION} -p ${SENTRY_PROJECT} files ${RELEASE_VERSION} upload-sourcemaps ${SOURCE_MAP_LOCATION}
+sentry-cli releases -o ${SENTRY_ORGANIZATION} -p ${SENTRY_PROJECT} finalize ${RELEASE_VERSION}
 )
 
 # Preserve output for consumption by downstream actions
