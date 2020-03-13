@@ -1,0 +1,29 @@
+name: 'Release and source maps'
+description: 'Create a release and deploy source maps'
+inputs:
+  sentry-organisation:  # What org to use
+    description: 'What org to use'
+    required: true
+  sentry-project:  # What project to use
+    description: 'What project to use'
+    required: true
+  sentry-auth-key:  # Auth key for sentry
+    description: 'Auth token for Sentry'
+    required: true
+  release-id:  # Auth key for sentry
+    description: 'Optional manually given release ID, by default uses propose-version'
+    required: false
+  source-map-location: 
+    description: 'Where are the source maps located?'
+    required: true
+    default: '~/'
+  source-map-prefix: 
+    description: 'Optional prefix for the location of source maps'
+    required: false
+    default: '~/'
+outputs:
+  versionId: # id of output
+    description: 'used version id'
+runs:
+  using: 'node12'
+  main: 'index.js'

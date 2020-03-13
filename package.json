@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "@actions/core": "^1.2.3",
+    "@actions/github": "^2.1.1",
+    "@sentry/cli": "^1.51.1",
+    "shelljs": "^0.8.3"
+  },
+  "name": "sentry-deployment-action",
+  "version": "0.0.1",
+  "description": "For creating Sentry release and uploading source maps during CI eith GH Actions",
+  "main": "index.js",
+  "author": "Ronnie Nygren",
+  "license": "MIT"
+}
