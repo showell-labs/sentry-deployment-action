@@ -1,6 +1,8 @@
 const fs = require('fs');
 const core = require('@actions/core');
 const github = require('@actions/github');
+const shell = require('shelljs');
+shell.exec('npm install @sentry/cli');
 const SentryCli = require('@sentry/cli');
 
 async function run() {
@@ -9,16 +11,16 @@ async function run() {
         const sentryProj = core.getInput('sentry-project');
         const sentryAuthKey = core.getInput('sentry-auth-key');
         const confFile = `
-          [auth]
-          token=${sentryAuthKey}
-          [defaults]
-          project = ${sentryProj}
-          org = ${sentryOrg}
+[auth]
+token=${sentryAuthKey}
+[defaults]
+project=${sentryProj}
+org=${sentryOrg}
         `;
         fs.writeFileSync('.sentryclirc', confFile, {
             flag: 'w+'
         })
-        const releaseId = core.getInput('release-id');
+        const releaseId = core.getInput('release-id') || 'showell';
         const sourceMapLoc = core.getInput('source-map-location');
         const sourceMapPre = core.getInput('source-map-prefix');
       
