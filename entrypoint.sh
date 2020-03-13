@@ -12,14 +12,14 @@ set -e
 [ -n "$RELEASE_VERSION" ] || export RELEASE_VERSION="$(sentry-cli releases propose-version)"
 
 export SENTRY_AUTH_TOKEN=$3
+export SENTRY_LOG_LEVEL=info
 
 echo "Release version is ${RELEASE_VERSION}"
 # Capture output
 output=$(
-sentry-cli releases new $RELEASE_VERSION
-sentry-cli releases -o $1 -p $2 files $RELEASE_VERSION upload-sourcemaps $5
-sentry-cli releases deploys $RELEASE_VERSION new -e $ENVIRONMENT
-sentry-cli releases finalize "$RELEASE_VERSION"
+sentry-cli releases -o ${1} -p ${2} new $RELEASE_VERSION
+sentry-cli releases -o ${1} -p ${2} files $RELEASE_VERSION upload-sourcemaps ${5}
+sentry-cli releases -o ${1} -p ${2} finalize $RELEASE_VERSION
 )
 
 # Preserve output for consumption by downstream actions
