@@ -15,6 +15,8 @@ export SENTRY_AUTH_TOKEN=$SENTRY_AUTH_TOKEN
 export SENTRY_LOG_LEVEL=info
 
 echo "Release version is ${RELEASE_VERSION}"
+echo "Organization is ${SENTRY_ORGANIZATION}"
+echo "Project is ${SENTRY_PROJECT}"
 # Capture output
 output=$(
 sentry-cli releases -o ${SENTRY_ORGANIZATION} -p ${SENTRY_PROJECT} new ${RELEASE_VERSION}
