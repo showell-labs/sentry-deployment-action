@@ -9,19 +9,19 @@
 set -e
 
 # Respect RELEASE_VERSION if specified
-[ -n "$RELEASE_VERSION" ] || export RELEASE_VERSION="$(sentry-cli releases propose-version)"
+[ -n "$INPUT_RELEASEVERSION" ] || export RELEASE_VERSION="$(sentry-cli releases propose-version)"
 
-export SENTRY_AUTH_TOKEN=$SENTRY_AUTH_TOKEN
+export SENTRY_AUTH_TOKEN=$INPUT_SENTRYAUTHTOKEN
 export SENTRY_LOG_LEVEL=info
 
 echo "Release version is ${RELEASE_VERSION}"
-echo "Organization is ${SENTRY_ORGANIZATION}"
-echo "Project is ${SENTRY_PROJECT}"
+echo "Organization is ${INPUT_SENTRYORGANIZATION}"
+echo "Project is ${INPUT_SENTRYPROJECT}"
 # Capture output
 output=$(
-sentry-cli releases -o ${SENTRY_ORGANIZATION} -p ${SENTRY_PROJECT} new ${RELEASE_VERSION}
-sentry-cli releases -o ${SENTRY_ORGANIZATION} -p ${SENTRY_PROJECT} files ${RELEASE_VERSION} upload-sourcemaps ${SOURCE_MAP_LOCATION}
-sentry-cli releases -o ${SENTRY_ORGANIZATION} -p ${SENTRY_PROJECT} finalize ${RELEASE_VERSION}
+sentry-cli releases -o ${INPUT_SENTRYORGANIZATION} -p ${INPUT_SENTRYPROJECT} new ${RELEASE_VERSION}
+sentry-cli releases -o ${INPUT_SENTRYORGANIZATION} -p ${INPUT_SENTRYPROJECT} files ${RELEASE_VERSION} upload-sourcemaps ${INPUT_SOURCEMAPLOCATION}
+sentry-cli releases -o ${INPUT_SENTRYORGANIZATION} -p ${INPUT_SENTRYPROJECT} finalize ${RELEASE_VERSION}
 )
 
 # Preserve output for consumption by downstream actions
