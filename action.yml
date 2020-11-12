@@ -1,29 +1,29 @@
-name: 'Release and source maps'
-description: 'Create a release and deploy source maps'
+name: "Release and source maps"
+description: "Create a release and deploy source maps"
 inputs:
-  sentryOrganisation:  # What org to use
-    description: 'What org to use'
+  sentryOrganization: # What org to use
+    description: "What org to use"
     required: true
-  sentryProject:  # What project to use
-    description: 'What project to use'
+  sentryProject: # What project to use
+    description: "What project to use"
     required: true
-  sentryAuthKey:  # Auth key for sentry
-    description: 'Auth token for Sentry'
+  sentryAuthToken: # Auth key for sentry
+    description: "Auth token for Sentry"
     required: true
-  releaseId:  # Auth key for sentry
-    description: 'Optional manually given release ID, by default uses propose-version'
+  releaseId: # Auth key for sentry
+    description: "Optional manually given release ID, by default uses propose-version"
     required: false
-  sourceMapLocation: 
-    description: 'Where are the source maps located?'
+  sourceMapLocation:
+    description: "Where are the source maps located?"
     required: true
-    default: '~/'
-  sourceMapPrefix: 
-    description: 'Optional prefix for the location of source maps'
+    default: "~/"
+  sourceMapPrefix:
+    description: "Optional prefix for the location of source maps"
     required: false
-    default: '~/'
+    default: "~/"
 outputs:
   versionId: # id of output
-    description: 'used version id'
+    description: "used version id"
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"
