@@ -2,7 +2,7 @@
   "dependencies": {
     "@actions/core": "^1.2.3",
     "@actions/github": "^2.1.1",
-    "shelljs": "^0.8.3"
+    "shelljs": "^0.8.5"
   },
   "name": "sentry-deployment-action",
   "version": "0.0.1",
