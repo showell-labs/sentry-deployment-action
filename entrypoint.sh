@@ -20,6 +20,7 @@ echo "Project is ${INPUT_SENTRYPROJECT}"
 # Capture output
 output=$(
 sentry-cli releases -o ${INPUT_SENTRYORGANIZATION} -p ${INPUT_SENTRYPROJECT} new ${RELEASE_VERSION}
+sentry-cli releases set-commits --auto ${RELEASE_VERSION}
 sentry-cli releases -o ${INPUT_SENTRYORGANIZATION} -p ${INPUT_SENTRYPROJECT} files ${RELEASE_VERSION} upload-sourcemaps ${INPUT_SOURCEMAPLOCATION}
 sentry-cli releases -o ${INPUT_SENTRYORGANIZATION} -p ${INPUT_SENTRYPROJECT} finalize ${RELEASE_VERSION}
 )
