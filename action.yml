@@ -26,5 +26,5 @@ outputs:
     description: "used version id"
 runs:
   using: "docker"
-  image: "docker://getsentry:sentry-cli"
+  image: "docker://getsentry/sentry-cli"
   entrypoint: "main.sh"
