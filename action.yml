@@ -1,18 +1,18 @@
 name: "Release and source maps"
 description: "Create a release and deploy source maps"
 inputs:
-  sentryOrganization: # What org to use
+  sentryOrganization:
     description: "What org to use"
     required: true
-  sentryProject: # What project to use
+  sentryProject:
     description: "What project to use"
     required: true
-  sentryAuthToken: # Auth key for sentry
+  sentryAuthToken:
     description: "Auth token for Sentry"
     required: true
-  releaseId: # Auth key for sentry
-    description: "Optional manually given release ID, by default uses propose-version"
-    required: false
+  releaseId:
+    description: "Release ID"
+    required: true
   sourceMapLocation:
     description: "Where are the source maps located?"
     required: true
@@ -26,4 +26,5 @@ outputs:
     description: "used version id"
 runs:
   using: "docker"
-  image: "Dockerfile"
+  image: "getsentry/sentry-cli"
+  entrypoint: "main.sh"
