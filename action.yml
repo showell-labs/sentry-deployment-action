@@ -27,4 +27,3 @@ outputs:
 runs:
   using: "docker"
   image: "Dockerfile"
-  args: '-u "$(id -u):$(id -g)"'
